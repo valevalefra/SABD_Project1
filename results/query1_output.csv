@@ -25,7 +25,7 @@ Febbraio;Basilicata;32
 Febbraio;Calabria;19
 Febbraio;Campania;142
 Febbraio;Emilia-Romagna;42
-Febbraio;Friuli-Venezia Giulia;36
+Febbraio;Friuli-Venezia Giulia;35
 Febbraio;Lazio;46
 Febbraio;Liguria;14
 Febbraio;Lombardia;115
@@ -46,7 +46,7 @@ Marzo;Basilicata;54
 Marzo;Calabria;50
 Marzo;Campania;275
 Marzo;Emilia-Romagna;104
-Marzo;Friuli-Venezia Giulia;65
+Marzo;Friuli-Venezia Giulia;64
 Marzo;Lazio;111
 Marzo;Liguria;36
 Marzo;Lombardia;260
@@ -67,7 +67,7 @@ Aprile;Basilicata;94
 Aprile;Calabria;84
 Aprile;Campania;531
 Aprile;Emilia-Romagna;161
-Aprile;Friuli-Venezia Giulia;101
+Aprile;Friuli-Venezia Giulia;99
 Aprile;Lazio;157
 Aprile;Liguria;68
 Aprile;Lombardia;492
@@ -84,11 +84,11 @@ Aprile;Umbria;97
 Aprile;Valle d'Aosta / Vallée d'Aoste;105
 Aprile;Veneto;121
 Maggio;Abruzzo;193
-Maggio;Basilicata;148
+Maggio;Basilicata;147
 Maggio;Calabria;149
-Maggio;Campania;969
+Maggio;Campania;971
 Maggio;Emilia-Romagna;204
-Maggio;Friuli-Venezia Giulia;167
+Maggio;Friuli-Venezia Giulia;165
 Maggio;Lazio;255
 Maggio;Liguria;69
 Maggio;Lombardia;726
@@ -104,23 +104,24 @@ Maggio;Toscana;134
 Maggio;Umbria;129
 Maggio;Valle d'Aosta / Vallée d'Aoste;132
 Maggio;Veneto;175
-Giugno;Abruzzo;3
-Giugno;Basilicata;4
-Giugno;Calabria;2
-Giugno;Campania;16
-Giugno;Emilia-Romagna;3
-Giugno;Lazio;5
-Giugno;Liguria;2
-Giugno;Lombardia;18
-Giugno;Marche;4
-Giugno;Molise;9
-Giugno;Piemonte;3
-Giugno;Provincia Autonoma Bolzano / Bozen;1
-Giugno;Provincia Autonoma Trento;6
-Giugno;Puglia;0
-Giugno;Sardegna;3
-Giugno;Sicilia;4
-Giugno;Toscana;2
-Giugno;Umbria;2
-Giugno;Valle d'Aosta / Vallée d'Aoste;2
-Giugno;Veneto;3
+Giugno;Abruzzo;8
+Giugno;Basilicata;8
+Giugno;Calabria;3
+Giugno;Campania;35
+Giugno;Emilia-Romagna;6
+Giugno;Friuli-Venezia Giulia;6
+Giugno;Lazio;12
+Giugno;Liguria;3
+Giugno;Lombardia;32
+Giugno;Marche;9
+Giugno;Molise;14
+Giugno;Piemonte;6
+Giugno;Provincia Autonoma Bolzano / Bozen;3
+Giugno;Provincia Autonoma Trento;10
+Giugno;Puglia;2
+Giugno;Sardegna;4
+Giugno;Sicilia;9
+Giugno;Toscana;5
+Giugno;Umbria;3
+Giugno;Valle d'Aosta / Vallée d'Aoste;5
+Giugno;Veneto;5

@@ -20,19 +20,28 @@ public class Query1_Preprocessing {
      * - columns selection;
      * - join between the two considered datasets;
      * - sort dataset by date
-     * @param datasetSum
-     * @param dataset3
+     * @param dataset1 containing regions and hubs names
+     * @param dataset3 containing data, regions (id and name) and total vaccinations
      * @return sorted dataset by date
      */
-    public static JavaPairRDD<String, Tuple3<String, String, Integer>> preprocessing(JavaPairRDD<String, Integer> datasetSum, JavaRDD<String> dataset3) {
+    public static JavaPairRDD<String, Tuple3<String, String, Integer>> preprocessing(JavaRDD<String> dataset1, JavaRDD<String> dataset3) {
 
-        String firstLine = dataset3.first();
-        //select util columns from dataset 3: country, date, complete name of country, tot vaccine
+        String firstLine1 = dataset1.first();
+        String firstLine2 = dataset3.first();
+
+        JavaRDD<String> useful_csv_rows = dataset1.filter(row -> !(row.equals(firstLine1)));
+
+        JavaPairRDD<String, Integer> datasetSum = useful_csv_rows.mapToPair(line -> {
+            String[] lineSplit = line.split(",");
+            return new Tuple2<>((lineSplit[0]), 1);}).reduceByKey(Integer::sum);
+        //joinDataset returns: country, date, complete name of country, total vaccinations
         JavaPairRDD<String, Tuple2<Tuple3<String, String, String>, Integer>> joinDataset = dataset3
-                .filter(row -> (!(row.equals(firstLine)) && row.split(",")[0].compareTo("2021-01-01")>=0))
+                .filter(row -> (!(row.equals(firstLine2)) && row.split(",")[0].compareTo("2021-01-01")>=0))
                 .mapToPair(line -> {
                     String[] lineSplit = line.split(",");
+                    //selecting date, number of vaccinations and region complete name from the first dataset
                     Tuple3<String, String, String> columns = new Tuple3<>(lineSplit[0],lineSplit[2],lineSplit[lineSplit.length-1]);
+                    //putting as key the region id
                     return new Tuple2<>((lineSplit[1]), columns);
                 }).join(datasetSum);
 
