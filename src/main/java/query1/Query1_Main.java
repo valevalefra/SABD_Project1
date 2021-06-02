@@ -11,11 +11,12 @@ import utility.Date_Parser;
 import utility.HDFS_Utils;
 import utility.Tuple_Comparator2;
 
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.YearMonth;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
 
 public class Query1_Main {
 
@@ -34,7 +35,7 @@ public class Query1_Main {
 
         Instant start = Instant.now();
 
-        Tuple_Comparator2 compare = new Tuple_Comparator2<>(Comparator.<Date>naturalOrder(), Comparator.<String>naturalOrder());
+        Tuple_Comparator2<String, String> compare = new Tuple_Comparator2<>(Comparator.<String>naturalOrder(), Comparator.<String>naturalOrder());
 
         JavaPairRDD<String, Tuple3<String, String, Integer>> sortDataset = Query1_Preprocessing.preprocessing(dataset1, dataset3);
 
@@ -43,7 +44,8 @@ public class Query1_Main {
         JavaPairRDD<Tuple2<String, String>, Double> resultDataset = sortDataset.
                 mapToPair(
                         tuple -> {
-                            Calendar calendar = Date_Parser.getCalendar(tuple._1(), "yyyy-MM-dd");
+                            Calendar calendar = Date_Parser
+                                    .getCalendar(Date_Parser.getConvertedDate(tuple._1(), "yyyy-MM-dd"));
                             String month = Date_Parser.getDate(calendar, "yyyy-MM");
                             double num= Double.parseDouble(tuple._2._1());
                             double d= (double) (tuple._2._3());
@@ -54,12 +56,13 @@ public class Query1_Main {
 
         //ReduceByKey and sortByKey operations in order to obtain the average number of vaccinations
         //for each area and month
-        JavaPairRDD<Tuple2<String, String>, Double> finalDataset = resultDataset.reduceByKey(Double::sum).sortByKey(compare);
+        JavaPairRDD<Tuple2<String, String>, Double> finalDataset = resultDataset.reduceByKey(Double::sum).sortByKey(compare, true);
 
         //Map operation containing the month formatting and the daily average number of vaccinations calculation,
         //by dividing for the number of days in each month
         JavaRDD<String> resultRDD= finalDataset.map(tuple-> {
-                    Calendar calendar = Date_Parser.getCalendar(tuple._1._1(), "yyyy-MM");
+                    Calendar calendar = Date_Parser
+                            .getCalendar(Date_Parser.getConvertedDate(tuple._1._1(), "yyyy-MM"));
                     String month = Date_Parser.getDate(calendar,"MMMM");
                     double daysInMonth = Date_Parser.getDaysInMonth(calendar);
                     String finMonth = month.substring(0,1).toUpperCase(Locale.ROOT)

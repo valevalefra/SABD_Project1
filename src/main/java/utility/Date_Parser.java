@@ -11,12 +11,24 @@ import java.util.Locale;
 public class Date_Parser {
 
     /**
-     * Function to obtain the Calendar with time set based on the starting format
-     * @param date to parse
-     * @param startFormat to which date has to be parsed
+     * Function to obtain the Calendar from date
+     * @param convertedCurrentDate to set calendar time from
      * @return Calendar with time set
      */
-    public static Calendar getCalendar(String date, String startFormat){
+    public static Calendar getCalendar(Date convertedCurrentDate){
+        Calendar calendar = new GregorianCalendar(Locale.ITALIAN);
+        assert convertedCurrentDate != null;
+        calendar.setTime(convertedCurrentDate);
+        return calendar;
+    }
+
+    /**
+     * Function to obtain the date from the starting format
+     * @param date to parse
+     * @param startFormat to which date has to be parsed
+     * @return converted date
+     */
+    public static Date getConvertedDate(String date, String startFormat){
         SimpleDateFormat sdf = new SimpleDateFormat(startFormat);
         Date convertedCurrentDate = null;
         try {
@@ -24,9 +36,7 @@ public class Date_Parser {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Calendar calendar = new GregorianCalendar(Locale.ITALIAN);
-        calendar.setTime(convertedCurrentDate);
-        return calendar;
+        return convertedCurrentDate;
     }
 
     /**
@@ -50,4 +60,5 @@ public class Date_Parser {
         YearMonth yearMonthObject = YearMonth.of(calendar.get(Calendar.YEAR), month);
         return (double) yearMonthObject.lengthOfMonth();
     }
+
 }

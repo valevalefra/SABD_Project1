@@ -9,9 +9,10 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 import scala.Tuple3;
-import scala.Tuple4;
-import utility.*;
-//import utility.Regression_Utils;
+import utility.CSV_Writer;
+import utility.Date_Parser;
+import utility.HDFS_Utils;
+import utility.Tuple_Comparator3;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -20,7 +21,9 @@ import java.util.*;
 import java.util.stream.StreamSupport;
 
 public class Query2_Main {
+
     public static void main(String[] args) {
+
         SparkConf sparkConf = new SparkConf()
                 .setMaster("local")
                 .setAppName("Query 2");
@@ -32,7 +35,9 @@ public class Query2_Main {
                 new Tuple_Comparator3<>(Comparator.<String>naturalOrder(),
                         Comparator.<String>naturalOrder(), Comparator.<String>naturalOrder());
 
+        //retrieving dataset from HDFS
         JavaRDD<String> dataset2 = sc.textFile(HDFS_Utils.getDS2());
+
         JavaPairRDD<Tuple3<String, String, String>, Integer> dataset = Query2_Preprocessing.preprocessing(dataset2)
                 .reduceByKey(Integer::sum);
 
@@ -42,14 +47,11 @@ public class Query2_Main {
         JavaPairRDD<Tuple3<String, String, String>, SimpleRegression> groupedDataset = dataset
                 .mapToPair(row -> {
 
-                    SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-                    Date convertedCurrentDate = sdf1.parse(row._1._1());
+                    Date convertedCurrentDate = Date_Parser.getConvertedDate(row._1._1(), "yyyy-MM-dd");
                     long day = convertedCurrentDate.getTime();
+                    Calendar calendar = Date_Parser.getCalendar(convertedCurrentDate);
+                    String month = Date_Parser.getDate(calendar, "yyyy-MM");
 
-                    Calendar calendar = new GregorianCalendar(Locale.ITALIAN);
-                    calendar.setTime(convertedCurrentDate);
-                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM");
-                    String month = sdf2.format(calendar.getTime());
                     SimpleRegression sr = new SimpleRegression();
                     sr.addData((double) day, (double) row._2);
                     return new Tuple2<>(new Tuple3<>(month, row._1._2(), row._1._3()), sr);
@@ -62,10 +64,12 @@ public class Query2_Main {
                     a.append(b);
                     return a;
                 });
+
         JavaPairRDD<Tuple3<String, String, String>, SimpleRegression> sortedDataset = reducedDataset.sortByKey(compare, true);
 
         JavaRDD<Tuple2<Tuple2<String, String>, Tuple2<Integer, String>>> finalDataset = sortedDataset
                 .map(row -> {
+
                     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM");
                     Date monthConv = sdf2.parse(row._1._1());
                     Calendar c = new GregorianCalendar(Locale.ITALIAN);

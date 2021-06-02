@@ -5,18 +5,14 @@ import org.apache.spark.api.java.JavaRDD;
 import scala.Tuple2;
 import scala.Tuple3;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
 public class Query1_Preprocessing {
+
+    private static final String START_DATE = "2021-01-01";
 
     /**
      * Query 1 preprocessing, consisting in:
      * - filtering of initial dataset by deleting the first line and considering
-     *   dates after 1 January;
+     *   dates after 1st January;
      * - columns selection;
      * - join between the two considered datasets;
      * - sort dataset by date
@@ -34,9 +30,10 @@ public class Query1_Preprocessing {
         JavaPairRDD<String, Integer> datasetSum = useful_csv_rows.mapToPair(line -> {
             String[] lineSplit = line.split(",");
             return new Tuple2<>((lineSplit[0]), 1);}).reduceByKey(Integer::sum);
+
         //joinDataset returns: country, date, complete name of country, total vaccinations
         JavaPairRDD<String, Tuple2<Tuple3<String, String, String>, Integer>> joinDataset = dataset3
-                .filter(row -> (!(row.equals(firstLine2)) && row.split(",")[0].compareTo("2021-01-01")>=0))
+                .filter(row -> (!(row.equals(firstLine2)) && row.split(",")[0].compareTo(START_DATE)>=0))
                 .mapToPair(line -> {
                     String[] lineSplit = line.split(",");
                     //selecting date, number of vaccinations and region complete name from the first dataset
