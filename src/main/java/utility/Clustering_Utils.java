@@ -51,7 +51,6 @@ public class Clustering_Utils {
         Dataset<Row> predictions = model.transform(transData);
         Instant endBisectingKMeans = Instant.now();
         long timeBisectingKMeans = Duration.between(startBisectingKMeans, endBisectingKMeans).toMillis();
-        //predictions.show();
         // Evaluate clustering by computing Silhouette score
         ClusteringEvaluator evaluator = new ClusteringEvaluator();
         double eval = evaluator.evaluate(predictions);
@@ -66,24 +65,17 @@ public class Clustering_Utils {
         Instant startKMeans = Instant.now();
         KMeans kmeans = new KMeans().setK(k).setSeed(1L);
         KMeansModel model =  kmeans.fit(transData);
-        ClusteringEvaluator evaluator = new ClusteringEvaluator();
+        // Make predictions
         Query3_Result result = new Query3_Result();
         Dataset<Row> predictions = model.transform(transData);
         Instant endKMeans = Instant.now();
         long timeKMeans = Duration.between(startKMeans, endKMeans).toMillis();
+        // Evaluate clustering by computing Silhouette score
+        ClusteringEvaluator evaluator = new ClusteringEvaluator();
         double eval = evaluator.evaluate(predictions);
         result.setDataset(predictions);
         result.setEval(eval);
         result.setTime(timeKMeans);
         return result;
-        /**System.out.println(eval);
-        List<Row> list = predictions.groupBy("prediction").agg(
-                functions.collect_list("area").as("area"),
-                functions.collect_list("total%").as("total%")).collectAsList();
-        for (Row elem:list) {
-            System.out.println(elem.get(0));
-            System.out.println(elem.getList(1));
-            System.out.println(elem.get(2));
-        }*/
     }
 }
