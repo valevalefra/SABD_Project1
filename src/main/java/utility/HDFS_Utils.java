@@ -25,7 +25,6 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-
 public class HDFS_Utils {
     private final static String HDFS_NAMENODE_ADDRESS = "127.0.0.1";
     private final static String HDFS_NAMENODE_PORT = "9871";
@@ -91,18 +90,5 @@ public class HDFS_Utils {
             System.err.println("Could not save file to HDFS");
         }
     }
-   /* private static final StructType struct = DataTypes.createStructType(Arrays.asList(DataTypes.createStructField("cluster", DataTypes.StringType, false),
-            DataTypes.createStructField("region", DataTypes.StringType,false)));
-
-    public void saveRDDasCSV(JavaRDD<Row> rows, StructType structType, String filename) throws URISyntaxException {
-        Dataset<Row> dataset = this.sparkSession.createDataFrame(rows, structType);
-        dataset.write()
-                .format("csv")
-                .option("header", true)
-                .mode(SaveMode.Overwrite)
-                .save(new URI(HDFS_Utils.getHdfs()) + OUTPUT_FOLDER + "/" + filename );
-    }
-*/
-
 }
 
