@@ -37,17 +37,17 @@ public class Query3_Main {
         JavaRDD<String> dataset3 = sc.textFile(HDFS_Utils.getDS3());
         JavaRDD<String> totalPopulation = sc.textFile(HDFS_Utils.getTotPopulation());
 
-        JavaPairRDD<String, Integer> totalDataset = Query3_Preprocessing.totalPopulationPreprocessing(totalPopulation);
-        JavaPairRDD<String, Tuple2<String, Integer>> filterDataset = Query3_Preprocessing.dataset3Preprocessing(dataset3);
+        JavaPairRDD<String, Integer> totalRDD = Query3_Preprocessing.totalPopulationPreprocessing(totalPopulation);
+        JavaPairRDD<String, Tuple2<String, Integer>> filterRDD = Query3_Preprocessing.dataset3Preprocessing(dataset3);
 
         Instant start = Instant.now();
         //sum number of vaccinations for each area
-        JavaPairRDD<String,Integer> tempDataset = filterDataset
+        JavaPairRDD<String,Integer> tempRDD = filterRDD
                 .mapToPair(row-> new Tuple2<>(row._1(), row._2._2()))
                 .reduceByKey(Integer::sum);
 
-        //create instance of simple regression and adding observations to the model: day and number of vaccinations
-        JavaPairRDD<String, SimpleRegression> regDataset = filterDataset
+        //create instance of Simple Regression and adding observations to the model: day and number of vaccinations
+        JavaPairRDD<String, SimpleRegression> regRDD = filterRDD
                 .mapToPair(row -> {
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                     Date convertedCurrentDate = sdf1.parse(row._2._1());
@@ -58,25 +58,25 @@ public class Query3_Main {
                 });
 
         //for each area return calculated values of simple regression
-        JavaPairRDD<String, SimpleRegression> reducedDataset = regDataset
+        JavaPairRDD<String, SimpleRegression> reducedRDD = regRDD
                 .reduceByKey((a,b) -> {
                     a.append(b);
                     return a;
                 });
 
         /*
-          for each area predict number of vaccinations at 1 June. Join dataset
-          in order to obtain dataset columns: area and the estimate of the percentage
+          for each area predict number of vaccinations at 1 June. Join RDD
+          in order to obtain columns: area and the estimate of the percentage
           of the population vaccinated on 1 June
          */
-        JavaRDD<Tuple2<String, Double>> resultRDD =  reducedDataset
+        JavaRDD<Tuple2<String, Double>> resultRDD =  reducedRDD
                 .mapToPair(row -> {
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                     Date monthConv = sdf1.parse(DATE_OF_PREDICTION);
                     double firstJune = monthConv.getTime();
                     double newVax = row._2().predict(firstJune);
                     return new Tuple2<>(row._1(), (int)newVax);
-                }).join(totalDataset).join(tempDataset)
+                }).join(totalRDD).join(tempRDD)
                 .map(row->  new Tuple2<>(row._1(), (double)(row._2._1._1()+row._2._2())/row._2._1._2()));
 
         //collect action to obtain the final list
