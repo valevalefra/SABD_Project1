@@ -16,6 +16,9 @@ import java.time.Instant;
 import java.util.*;
 
 public class Query3_Main {
+
+    private static final String DATE_OF_PREDICTION = "2021-06-01";
+
     public static void main(String[] args) {
         SparkConf sparkConf = new SparkConf()
                 .setMaster("local")
@@ -30,44 +33,53 @@ public class Query3_Main {
                 .master("local")
                 .getOrCreate();
 
+        //retrieving datasets from HDFS
         JavaRDD<String> dataset3 = sc.textFile(HDFS_Utils.getDS3());
         JavaRDD<String> totalPopulation = sc.textFile(HDFS_Utils.getTotPopulation());
 
-        JavaPairRDD<String, Integer> totalDataset = Query3_Preprocessing.totalPopulationPreprocessing(totalPopulation);
-        JavaPairRDD<String, Tuple2<String, Integer>> filterDataset = Query3_Preprocessing.dataset3Preprocessing(dataset3);
+        JavaPairRDD<String, Integer> totalRDD = Query3_Preprocessing.totalPopulationPreprocessing(totalPopulation);
+        JavaPairRDD<String, Tuple2<String, Integer>> filterRDD = Query3_Preprocessing.dataset3Preprocessing(dataset3);
 
         Instant start = Instant.now();
-
-        JavaPairRDD<String,Integer> tempDataset = filterDataset
+        //sum number of vaccinations for each area
+        JavaPairRDD<String,Integer> tempRDD = filterRDD
                 .mapToPair(row-> new Tuple2<>(row._1(), row._2._2()))
-                .reduceByKey((a,b)-> (a+b));
+                .reduceByKey(Integer::sum);
 
-
-        JavaPairRDD<String, SimpleRegression> regDataset = filterDataset
+        //create instance of Simple Regression and adding observations to the model: day and number of vaccinations
+        JavaPairRDD<String, SimpleRegression> regRDD = filterRDD
                 .mapToPair(row -> {
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                     Date convertedCurrentDate = sdf1.parse(row._2._1());
-                    Long day = convertedCurrentDate.getTime();
+                    long day = convertedCurrentDate.getTime();
                     SimpleRegression sr = new SimpleRegression();
                     sr.addData((double)day, (double)row._2._2());
                     return new Tuple2<>(row._1(), sr);
                 });
-        JavaPairRDD<String, SimpleRegression> reducedDataset = regDataset
+
+        //for each area return calculated values of simple regression
+        JavaPairRDD<String, SimpleRegression> reducedRDD = regRDD
                 .reduceByKey((a,b) -> {
                     a.append(b);
                     return a;
                 });
 
-        JavaRDD<Tuple2<String, Double>> resultRDD =  reducedDataset
+        /*
+          for each area predict number of vaccinations at 1 June. Join RDD
+          in order to obtain columns: area and the estimate of the percentage
+          of the population vaccinated on 1 June
+         */
+        JavaRDD<Tuple2<String, Double>> resultRDD =  reducedRDD
                 .mapToPair(row -> {
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-                    Date monthConv = sdf1.parse("2021-06-01");
+                    Date monthConv = sdf1.parse(DATE_OF_PREDICTION);
                     double firstJune = monthConv.getTime();
                     double newVax = row._2().predict(firstJune);
                     return new Tuple2<>(row._1(), (int)newVax);
-                }).join(totalDataset).join(tempDataset)
+                }).join(totalRDD).join(tempRDD)
                 .map(row->  new Tuple2<>(row._1(), (double)(row._2._1._1()+row._2._2())/row._2._1._2()));
 
+        //collect action to obtain the final list
         List<Tuple2<String, Double>> data = resultRDD.collect();
         Encoder<Tuple2<String, Double>> encoder = Encoders.tuple(Encoders.STRING(), Encoders.DOUBLE());
         Dataset<Row> train = spark.createDataset(data, encoder).toDF("area", "total%");
