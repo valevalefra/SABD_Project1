@@ -37,11 +37,11 @@ public class Query1_Main {
 
         Tuple_Comparator2<String, String> compare = new Tuple_Comparator2<>(Comparator.<String>naturalOrder(), Comparator.<String>naturalOrder());
 
-        JavaPairRDD<String, Tuple3<String, String, Integer>> sortDataset = Query1_Preprocessing.preprocessing(dataset1, dataset3);
+        JavaPairRDD<String, Tuple3<String, String, Integer>> sortRdd = Query1_Preprocessing.preprocessing(dataset1, dataset3);
 
         //JavaPairRDD operations to calculate the ratio between the total vaccinations and
         //the hubs number for each hub
-        JavaPairRDD<Tuple2<String, String>, Double> resultDataset = sortDataset.
+        JavaPairRDD<Tuple2<String, String>, Double> resultRdd = sortRdd.
                 mapToPair(
                         tuple -> {
                             Calendar calendar = Date_Parser
@@ -56,11 +56,11 @@ public class Query1_Main {
 
         //ReduceByKey and sortByKey operations in order to obtain the average number of vaccinations
         //for each area and month
-        JavaPairRDD<Tuple2<String, String>, Double> finalDataset = resultDataset.reduceByKey(Double::sum).sortByKey(compare, true);
+        JavaPairRDD<Tuple2<String, String>, Double> finalRdd = resultRdd.reduceByKey(Double::sum).sortByKey(compare, true);
 
         //Map operation containing the month formatting and the daily average number of vaccinations calculation,
         //by dividing for the number of days in each month
-        JavaRDD<String> resultRDD= finalDataset.map(tuple-> {
+        JavaRDD<String> resultRDD= finalRdd.map(tuple-> {
                     Calendar calendar = Date_Parser
                             .getCalendar(Date_Parser.getConvertedDate(tuple._1._1(), "yyyy-MM"));
                     String month = Date_Parser.getDate(calendar,"MMMM");
