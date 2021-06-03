@@ -1,22 +1,22 @@
 # SABD_Project1
 
-  ###Project description
+  #### Project description
   
    Below is given a brief description of the folders that make up the project.
    
-   ####docker
+   #### docker
    
    This folder contains scripts and xml files to manage containers. A more accurate description 
    can be found in a specific README present in the docker folder.
    
-   ####results
+   #### results
    In this folder can be found all the outputs relative to the required queries. In particular:
    * *query1_output.csv*, contains query1 results; 
    * *query2_out.csv*, contains query2 results;
    * *query3_bisectingkmeans_output.csv* contains query3 results for the Bisecting K-Means algorithm;
    * *query3_kmeans_output.csv* contains query3 results for the K-Means algorithm;
    
-   ####src/main/java
+   #### src/main/java
    Here is contained the main Java code for the project. In particular it is divided into five folders:
    * **hbase** rapresenting the code for the storage system to export data from HDFS. This is further divided into:
      * *HBase_Client.java* contains methods to implement HBase client;
