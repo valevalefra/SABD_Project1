@@ -10,7 +10,7 @@
 * core-site.xml and core-site.xml the xml files that contain configurations to implement local
   host machine persistence 
   
-  To view nifi template connect to http://localhost:9880/nifi/ and upload nifi-template.xml
+  To view nifi template connect to http://localhost:9880/nifi/ and upload project_template.xml
   ## ##
   In order to launch the application it is necessary to insert *127.0.0.1 hbase* in directory etc/hosts 
      
