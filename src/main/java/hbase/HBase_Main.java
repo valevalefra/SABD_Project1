@@ -104,7 +104,6 @@ public class HBase_Main {
             FileSystem hdfs = FileSystem.get(new URI(HDFS_Utils.getHdfs()), configuration);
             Path dirPath = new Path(HDFS_Utils.getOutputPathQuery1());
             FileStatus[] fileStatuses = hdfs.listStatus(dirPath);
-            // in case of splitted file output add every file data
             for (FileStatus fileStatus : fileStatuses) {
                 // _SUCCESS file and subdirectories are ignored
                 if (!fileStatus.isDirectory() && !fileStatus.getPath().toString().contains("SUCCESS")) {
@@ -150,7 +149,6 @@ public class HBase_Main {
             FileSystem hdfs = FileSystem.get(new URI(HDFS_Utils.getHdfs()), configuration);
             Path dirPath = new Path(HDFS_Utils.getOutputPathQuery2());
             FileStatus[] fileStatuses = hdfs.listStatus(dirPath);
-            // in case of splitted file output add every file data
             for (FileStatus fileStatus : fileStatuses) {
                 // _SUCCESS file and subdirectories are ignored
                 if (!fileStatus.isDirectory() && !fileStatus.getPath().toString().contains("SUCCESS")) {
@@ -199,7 +197,6 @@ public class HBase_Main {
             // get HDFS connection
             FileSystem hdfs = FileSystem.get(new URI(HDFS_Utils.getHdfs()), configuration);
             FileStatus[] fileStatuses = hdfs.listStatus(dirPath);
-            // in case of splitted file output add every file data
             for (FileStatus fileStatus : fileStatuses) {
                 // _SUCCESS file and subdirectories are ignored
                 if (!fileStatus.isDirectory() && !fileStatus.getPath().toString().contains("SUCCESS")) {
