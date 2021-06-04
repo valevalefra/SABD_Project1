@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <template encoding-version="1.3">
     <description></description>
-    <groupId>6b428959-0179-1000-2c38-59c5cae47c05</groupId>
-    <name>nifi-template</name>
+    <groupId>b0636ba6-0179-1000-e735-8c2d617f30f8</groupId>
+    <name>project_tamplate</name>
     <snippet>
         <connections>
-            <id>109112b6-3b7b-317a-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>136b3a8b-c762-35da-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
             <backPressureObjectThreshold>10000</backPressureObjectThreshold>
             <destination>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>210162bd-447d-3c94-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>0aaeed64-96d4-375d-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </destination>
             <flowFileExpiration>0 sec</flowFileExpiration>
@@ -23,20 +23,20 @@
             <name></name>
             <selectedRelationships>success</selectedRelationships>
             <source>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>f514a217-be09-366b-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>8617d9eb-6a2a-344d-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </source>
             <zIndex>0</zIndex>
         </connections>
         <connections>
-            <id>fe635f60-8c19-3517-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>3cdc68a9-3fbe-3fed-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
             <backPressureObjectThreshold>10000</backPressureObjectThreshold>
             <destination>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>210162bd-447d-3c94-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>0aaeed64-96d4-375d-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </destination>
             <flowFileExpiration>0 sec</flowFileExpiration>
@@ -48,20 +48,20 @@
             <name></name>
             <selectedRelationships>success</selectedRelationships>
             <source>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>3d5717e0-e1de-3d5d-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>2ab65f9c-f06c-3368-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </source>
             <zIndex>0</zIndex>
         </connections>
         <connections>
-            <id>ff9d588b-37e4-36fa-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>be83ecd4-5d2b-36bd-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
             <backPressureObjectThreshold>10000</backPressureObjectThreshold>
             <destination>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>210162bd-447d-3c94-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>0aaeed64-96d4-375d-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </destination>
             <flowFileExpiration>0 sec</flowFileExpiration>
@@ -73,195 +73,43 @@
             <name></name>
             <selectedRelationships>success</selectedRelationships>
             <source>
-                <groupId>4cc0c15d-470c-30fd-0000-000000000000</groupId>
-                <id>131882f6-ec4c-3652-0000-000000000000</id>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>4315b0fa-2523-38ad-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>fde8fb7c-2ff2-30ec-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>0aaeed64-96d4-375d-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>f2be9b24-c166-332c-0000-000000000000</groupId>
+                <id>c790a0f2-fc5f-3fe6-0000-000000000000</id>
                 <type>PROCESSOR</type>
             </source>
             <zIndex>0</zIndex>
         </connections>
         <processors>
-            <id>131882f6-ec4c-3652-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>0aaeed64-96d4-375d-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <position>
-                <x>784.0</x>
-                <y>0.0</y>
-            </position>
-            <bundle>
-                <artifact>nifi-standard-nar</artifact>
-                <group>org.apache.nifi</group>
-                <version>1.13.2</version>
-            </bundle>
-            <config>
-                <bulletinLevel>WARN</bulletinLevel>
-                <comments></comments>
-                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
-                <descriptors>
-                    <entry>
-                        <key>URL</key>
-                        <value>
-                            <name>URL</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Filename</key>
-                        <value>
-                            <name>Filename</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>SSL Context Service</key>
-                        <value>
-                            <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
-                            <name>SSL Context Service</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Username</key>
-                        <value>
-                            <name>Username</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Password</key>
-                        <value>
-                            <name>Password</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Connection Timeout</key>
-                        <value>
-                            <name>Connection Timeout</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Data Timeout</key>
-                        <value>
-                            <name>Data Timeout</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>User Agent</key>
-                        <value>
-                            <name>User Agent</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Accept Content-Type</key>
-                        <value>
-                            <name>Accept Content-Type</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Follow Redirects</key>
-                        <value>
-                            <name>Follow Redirects</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>redirect-cookie-policy</key>
-                        <value>
-                            <name>redirect-cookie-policy</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>proxy-configuration-service</key>
-                        <value>
-                            <identifiesControllerService>org.apache.nifi.proxy.ProxyConfigurationService</identifiesControllerService>
-                            <name>proxy-configuration-service</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Proxy Host</key>
-                        <value>
-                            <name>Proxy Host</name>
-                        </value>
-                    </entry>
-                    <entry>
-                        <key>Proxy Port</key>
-                        <value>
-                            <name>Proxy Port</name>
-                        </value>
-                    </entry>
-                </descriptors>
-                <executionNode>ALL</executionNode>
-                <lossTolerant>false</lossTolerant>
-                <penaltyDuration>30 sec</penaltyDuration>
-                <properties>
-                    <entry>
-                        <key>URL</key>
-                        <value>http://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-summary-latest.csv</value>
-                    </entry>
-                    <entry>
-                        <key>Filename</key>
-                        <value>DS3.csv</value>
-                    </entry>
-                    <entry>
-                        <key>SSL Context Service</key>
-                    </entry>
-                    <entry>
-                        <key>Username</key>
-                    </entry>
-                    <entry>
-                        <key>Password</key>
-                    </entry>
-                    <entry>
-                        <key>Connection Timeout</key>
-                        <value>30 sec</value>
-                    </entry>
-                    <entry>
-                        <key>Data Timeout</key>
-                        <value>30 sec</value>
-                    </entry>
-                    <entry>
-                        <key>User Agent</key>
-                    </entry>
-                    <entry>
-                        <key>Accept Content-Type</key>
-                    </entry>
-                    <entry>
-                        <key>Follow Redirects</key>
-                        <value>true</value>
-                    </entry>
-                    <entry>
-                        <key>redirect-cookie-policy</key>
-                        <value>default</value>
-                    </entry>
-                    <entry>
-                        <key>proxy-configuration-service</key>
-                    </entry>
-                    <entry>
-                        <key>Proxy Host</key>
-                    </entry>
-                    <entry>
-                        <key>Proxy Port</key>
-                    </entry>
-                </properties>
-                <runDurationMillis>0</runDurationMillis>
-                <schedulingPeriod>0 s</schedulingPeriod>
-                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
-                <yieldDuration>1 sec</yieldDuration>
-            </config>
-            <executionNodeRestricted>false</executionNodeRestricted>
-            <name>Somministrazioni vaccini summary latest GetHTTP</name>
-            <relationships>
-                <autoTerminate>false</autoTerminate>
-                <name>success</name>
-            </relationships>
-            <state>STOPPED</state>
-            <style>
-                <entry>
-                    <key>background-color</key>
-                    <value>#000000</value>
-                </entry>
-            </style>
-            <type>org.apache.nifi.processors.standard.GetHTTP</type>
-        </processors>
-        <processors>
-            <id>210162bd-447d-3c94-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
-            <position>
-                <x>392.0</x>
-                <y>240.0</y>
+                <x>560.0</x>
+                <y>488.0</y>
             </position>
             <bundle>
                 <artifact>nifi-hadoop-nar</artifact>
@@ -445,7 +293,7 @@
                 <yieldDuration>1 sec</yieldDuration>
             </config>
             <executionNodeRestricted>false</executionNodeRestricted>
-            <name>DS1 PutHDFS</name>
+            <name>PutHDFS</name>
             <relationships>
                 <autoTerminate>true</autoTerminate>
                 <name>failure</name>
@@ -464,10 +312,187 @@
             <type>org.apache.nifi.processors.hadoop.PutHDFS</type>
         </processors>
         <processors>
-            <id>3d5717e0-e1de-3d5d-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>2ab65f9c-f06c-3368-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <position>
-                <x>392.0</x>
+                <x>0.0</x>
+                <y>144.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.13.2</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>URL</key>
+                        <value>
+                            <name>URL</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Filename</key>
+                        <value>
+                            <name>Filename</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
+                            <name>SSL Context Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Username</key>
+                        <value>
+                            <name>Username</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                        <value>
+                            <name>Password</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Connection Timeout</key>
+                        <value>
+                            <name>Connection Timeout</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Data Timeout</key>
+                        <value>
+                            <name>Data Timeout</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>User Agent</key>
+                        <value>
+                            <name>User Agent</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Accept Content-Type</key>
+                        <value>
+                            <name>Accept Content-Type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Follow Redirects</key>
+                        <value>
+                            <name>Follow Redirects</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>redirect-cookie-policy</key>
+                        <value>
+                            <name>redirect-cookie-policy</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>proxy-configuration-service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.proxy.ProxyConfigurationService</identifiesControllerService>
+                            <name>proxy-configuration-service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Proxy Host</key>
+                        <value>
+                            <name>Proxy Host</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Proxy Port</key>
+                        <value>
+                            <name>Proxy Port</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>URL</key>
+                        <value>http://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/punti-somministrazione-tipologia.csv</value>
+                    </entry>
+                    <entry>
+                        <key>Filename</key>
+                        <value>DS1.csv</value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                    </entry>
+                    <entry>
+                        <key>Username</key>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                    </entry>
+                    <entry>
+                        <key>Connection Timeout</key>
+                        <value>30 sec</value>
+                    </entry>
+                    <entry>
+                        <key>Data Timeout</key>
+                        <value>30 sec</value>
+                    </entry>
+                    <entry>
+                        <key>User Agent</key>
+                    </entry>
+                    <entry>
+                        <key>Accept Content-Type</key>
+                    </entry>
+                    <entry>
+                        <key>Follow Redirects</key>
+                        <value>true</value>
+                    </entry>
+                    <entry>
+                        <key>redirect-cookie-policy</key>
+                        <value>default</value>
+                    </entry>
+                    <entry>
+                        <key>proxy-configuration-service</key>
+                    </entry>
+                    <entry>
+                        <key>Proxy Host</key>
+                    </entry>
+                    <entry>
+                        <key>Proxy Port</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 s</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>Punti Somministazione Tipologia GetHTTP</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style>
+                <entry>
+                    <key>background-color</key>
+                    <value>#000000</value>
+                </entry>
+            </style>
+            <type>org.apache.nifi.processors.standard.GetHTTP</type>
+        </processors>
+        <processors>
+            <id>4315b0fa-2523-38ad-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
+            <position>
+                <x>368.0</x>
                 <y>0.0</y>
             </position>
             <bundle>
@@ -641,10 +666,187 @@
             <type>org.apache.nifi.processors.standard.GetHTTP</type>
         </processors>
         <processors>
-            <id>f514a217-be09-366b-0000-000000000000</id>
-            <parentGroupId>4cc0c15d-470c-30fd-0000-000000000000</parentGroupId>
+            <id>8617d9eb-6a2a-344d-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
             <position>
-                <x>0.0</x>
+                <x>1200.0</x>
+                <y>160.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.13.2</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>URL</key>
+                        <value>
+                            <name>URL</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Filename</key>
+                        <value>
+                            <name>Filename</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
+                            <name>SSL Context Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Username</key>
+                        <value>
+                            <name>Username</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                        <value>
+                            <name>Password</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Connection Timeout</key>
+                        <value>
+                            <name>Connection Timeout</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Data Timeout</key>
+                        <value>
+                            <name>Data Timeout</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>User Agent</key>
+                        <value>
+                            <name>User Agent</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Accept Content-Type</key>
+                        <value>
+                            <name>Accept Content-Type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Follow Redirects</key>
+                        <value>
+                            <name>Follow Redirects</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>redirect-cookie-policy</key>
+                        <value>
+                            <name>redirect-cookie-policy</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>proxy-configuration-service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.proxy.ProxyConfigurationService</identifiesControllerService>
+                            <name>proxy-configuration-service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Proxy Host</key>
+                        <value>
+                            <name>Proxy Host</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Proxy Port</key>
+                        <value>
+                            <name>Proxy Port</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>URL</key>
+                        <value>http://www.ce.uniroma2.it/courses/sabd2021/projects/totale-popolazione.csv</value>
+                    </entry>
+                    <entry>
+                        <key>Filename</key>
+                        <value>totalPopulation.csv</value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                    </entry>
+                    <entry>
+                        <key>Username</key>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                    </entry>
+                    <entry>
+                        <key>Connection Timeout</key>
+                        <value>30 sec</value>
+                    </entry>
+                    <entry>
+                        <key>Data Timeout</key>
+                        <value>30 sec</value>
+                    </entry>
+                    <entry>
+                        <key>User Agent</key>
+                    </entry>
+                    <entry>
+                        <key>Accept Content-Type</key>
+                    </entry>
+                    <entry>
+                        <key>Follow Redirects</key>
+                        <value>true</value>
+                    </entry>
+                    <entry>
+                        <key>redirect-cookie-policy</key>
+                        <value>default</value>
+                    </entry>
+                    <entry>
+                        <key>proxy-configuration-service</key>
+                    </entry>
+                    <entry>
+                        <key>Proxy Host</key>
+                    </entry>
+                    <entry>
+                        <key>Proxy Port</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 s</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>Total Population GetHTTP</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style>
+                <entry>
+                    <key>background-color</key>
+                    <value>#000000</value>
+                </entry>
+            </style>
+            <type>org.apache.nifi.processors.standard.GetHTTP</type>
+        </processors>
+        <processors>
+            <id>c790a0f2-fc5f-3fe6-0000-000000000000</id>
+            <parentGroupId>f2be9b24-c166-332c-0000-000000000000</parentGroupId>
+            <position>
+                <x>840.0</x>
                 <y>0.0</y>
             </position>
             <bundle>
@@ -750,11 +952,11 @@
                 <properties>
                     <entry>
                         <key>URL</key>
-                        <value>http://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/punti-somministrazione-tipologia.csv</value>
+                        <value>http://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-summary-latest.csv</value>
                     </entry>
                     <entry>
                         <key>Filename</key>
-                        <value>DS1.csv</value>
+                        <value>DS3.csv</value>
                     </entry>
                     <entry>
                         <key>SSL Context Service</key>
@@ -803,7 +1005,7 @@
                 <yieldDuration>1 sec</yieldDuration>
             </config>
             <executionNodeRestricted>false</executionNodeRestricted>
-            <name>Punti Somministazione Tipologia GetHTTP</name>
+            <name>Somministrazioni vaccini summary latest GetHTTP</name>
             <relationships>
                 <autoTerminate>false</autoTerminate>
                 <name>success</name>
@@ -818,5 +1020,5 @@
             <type>org.apache.nifi.processors.standard.GetHTTP</type>
         </processors>
     </snippet>
-    <timestamp>05/22/2021 16:54:46 UTC</timestamp>
+    <timestamp>06/04/2021 10:58:40 UTC</timestamp>
 </template>
