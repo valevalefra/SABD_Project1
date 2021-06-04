@@ -8,11 +8,12 @@ import scala.Tuple3;
 public class Query1_Preprocessing {
 
     private static final String START_DATE = "2021-01-01";
+    private static final String END_DATE = "2021-05-31";
 
     /**
      * Query 1 preprocessing, consisting in:
      * - filtering of initial dataset by deleting the first line and considering
-     *   dates after 1st January;
+     *   dates after 1st January to the 31st of May;
      * - columns selection;
      * - join between the two considered datasets;
      * - sort dataset by date
@@ -33,7 +34,9 @@ public class Query1_Preprocessing {
 
         //joinDataset returns: country, date, complete name of country, total vaccinations
         JavaPairRDD<String, Tuple2<Tuple3<String, String, String>, Integer>> joinRdd = dataset3
-                .filter(row -> (!(row.equals(firstLine2)) && row.split(",")[0].compareTo(START_DATE)>=0))
+                .filter(row -> (!(row.equals(firstLine2))
+                        && row.split(",")[0].compareTo(START_DATE)>=0)
+                        && row.split(",")[0].compareTo(END_DATE)<=0)
                 .mapToPair(line -> {
                     String[] lineSplit = line.split(",");
                     //selecting date, number of vaccinations and region complete name from the first dataset

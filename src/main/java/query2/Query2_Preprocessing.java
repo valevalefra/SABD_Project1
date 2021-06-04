@@ -9,11 +9,12 @@ import scala.Tuple3;
 public class Query2_Preprocessing {
 
     private static final String START_DATE = "2021-02-01";
+    private static final String END_DATE = "2021-05-31";
 
     /**
      * Query 2 preprocessing, consisting in:
      * - filtering the dataset by deleting the first line and considering
-     * - dates from the 1st of February;
+     * - dates from the 1st of February to the 31st of May;
      * - columns selection;
      * @param dataset2 containing administration date, age, number of female people vaccinated
      *                 and area name
@@ -24,7 +25,9 @@ public class Query2_Preprocessing {
         String firstLine = dataset2.first();
 
         return dataset2
-                .filter(row-> row.split(",")[0].compareTo(START_DATE)>=0 && !(row.equals(firstLine)))
+                .filter(row-> row.split(",")[0].compareTo(START_DATE)>=0
+                        && row.split(",")[0].compareTo(END_DATE)<=0
+                        && !(row.equals(firstLine)))
                 .mapToPair( row -> {
                     String[] lineSplit = row.split(",");
                     //putting as key a tuple with date, age and area
