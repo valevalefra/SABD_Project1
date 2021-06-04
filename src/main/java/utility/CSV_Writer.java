@@ -73,7 +73,6 @@ public class CSV_Writer {
                 k++;
             }
             writer.close();
-            System.out.print(csv.getPath());
         } catch (IOException e) {
             e.printStackTrace();
         }

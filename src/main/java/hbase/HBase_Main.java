@@ -22,22 +22,17 @@ public class HBase_Main {
     // Query 1 table structure
     private static final String TABLE_QUERY1_CF = "Administrations";
     private static final String TABLE_QUERY1_C1 = "AVG Vaccinations";
-    //private static final String TABLE_QUERY1_C2 = "Area";
-    //private static final String TABLE_QUERY1_C3 = "AVG Vaccinations";
 
     // Query 2 table structure
     private static final String TABLE_QUERY2_CF = "Administrations";
     private static final String TABLE_QUERY2_C1 = "Age";
     private static final String TABLE_QUERY2_C2 = "#Vaccinations";
-    private static final String TABLE_QUERY2_C3 = "Area";
-    private static final String TABLE_QUERY2_C4 = "#Vaccinations";
 
     // Query 3 table structure
     private static final String TABLE_QUERY3_CF = "Clusters";
-    private static final String TABLE_QUERY3_C1 = "K";
-    private static final String TABLE_QUERY3_C2 = "Clusters";
-    private static final String TABLE_QUERY3_C3 = "Evaluation";
-    private static final String TABLE_QUERY3_C4 = "Processing Time";
+    private static final String TABLE_QUERY3_C1 = "Clusters";
+    private static final String TABLE_QUERY3_C2 = "Evaluation";
+    private static final String TABLE_QUERY3_C3 = "Processing Time";
 
     public static void main(String[] args) throws ServiceException, IOException {
 
